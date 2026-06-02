@@ -2,7 +2,7 @@ import requests
 import os
 import json
 
-def call_openrouter(prompt, model="google/gemma-2-9b-it:free", system_prompt=None):
+def call_openrouter(prompt, model="google/gemma-4-31b-it:free", system_prompt=None):
     """
     Call OpenRouter API with the given prompt.
     Returns the generated text.
