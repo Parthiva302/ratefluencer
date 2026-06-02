@@ -19,14 +19,16 @@ def call_openrouter(prompt, model="google/gemma-4-31b-it:free", system_prompt=No
     messages.append({"role": "user", "content": prompt})
     
     payload = {
-        "model": model,
+        "models": [
+            "google/gemma-4-31b-it:free", 
+            "google/gemma-2-9b-it:free",
+            "meta-llama/llama-3.2-3b-instruct:free",
+            "mistralai/mistral-7b-instruct:free"
+        ],
         "messages": messages,
         "temperature": 0.7,
         "max_tokens": 1000
     }
-    
-    # Using json format if we ask for json in the prompt (optional for some models, but helpful)
-    # payload["response_format"] = {"type": "json_object"} can be used for some models if needed
     
     response = requests.post(
         "https://openrouter.ai/api/v1/chat/completions",
